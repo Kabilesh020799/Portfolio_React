@@ -40,7 +40,7 @@ function About() {
                   </div>
                   <h3>{entry.degree}</h3>
                   <p>
-                    {[entry.institution, entry.location].filter(Boolean).join(" · ")}
+                    {entry.institution}
                   </p>
                 </article>
               ))}
