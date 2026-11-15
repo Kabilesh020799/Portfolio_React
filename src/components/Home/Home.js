@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.scss";
 import { Link } from "react-scroll";
-import profile from "../../assets/profile.webp";
+import profile from "../../assets/Portfolio_dp.jpeg";
 import ResumePdf from "../../assets/Kabilesh27Resume.pdf";
 import SocialLinks from "../common/SocialLinks/SocialLinks";
 import { socialLinks } from "../../data";
@@ -20,8 +20,8 @@ function Home() {
           src={profile}
           className="home__profile"
           alt="Kabilesh Ravichandran"
-          width="487"
-          height="640"
+          width="2048"
+          height="2048"
           decoding="async"
           fetchPriority="high"
         />

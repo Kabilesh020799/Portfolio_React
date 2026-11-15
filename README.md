@@ -40,6 +40,14 @@ REACT_APP_EMAILJS_PUBLIC_KEY=
 
 Do not commit `.env`. If EmailJS is not configured, the interface directs visitors to email me directly.
 
+Values with the `REACT_APP_` prefix are compiled into browser JavaScript and are public. The EmailJS service ID, template ID, and public key are intended for browser use; never put provider secrets or private API keys in these variables. In the EmailJS dashboard, restrict allowed origins to the portfolio domain, keep its rate limits enabled, and enable CAPTCHA protection.
+
+`npm start` and `npm run build` run a check that rejects secret-looking client environment variable names and common credential formats in shipped source files. Production builds also get a Content Security Policy. `.env*`, Firebase local credentials, and common SSH private-key files are ignored by Git; `.env.example` remains tracked.
+
+Firebase Hosting deployments also receive the policy and standard browser security headers from `firebase.json`. The current GitHub Pages deployment does not read Firebase's response-header settings, but uses the production policy embedded during build.
+
+This is a static site and does not run an SSH server. SSH access is controlled by the GitHub or hosting account, outside this app. Keep deploy private keys out of the repository and secure the account with multifactor authentication. If a secret was ever committed, revoke or rotate it; deleting it from the latest version does not remove it from Git history.
+
 ## Quality checks
 
 ```bash

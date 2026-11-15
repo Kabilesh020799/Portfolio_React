@@ -14,9 +14,12 @@
     "react-scroll": "^1.8.1"
   },
   "scripts": {
+    "prestart": "node scripts/check-client-secrets.js",
     "start": "react-scripts start",
     "deploy": "npm run build && gh-pages -d build",
+    "prebuild": "node scripts/check-client-secrets.js",
     "build": "react-scripts build",
+    "postbuild": "node scripts/add-production-security-policy.js",
     "test": "react-scripts test",
     "test:ci": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject"
