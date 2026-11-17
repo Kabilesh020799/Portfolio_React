@@ -66,10 +66,55 @@
   animation: soft-reveal 0.7s $ease-standard 0.24s both;
 }
 
+.home__stats {
+  width: min($container-lg, $size-full);
+  margin: $space-large auto $space-none;
+  display: grid;
+  grid-template-columns: repeat($grid-three, minmax($size-none, $fr-unit));
+  gap: $space-3;
+  animation: soft-reveal 0.7s $ease-standard 0.32s both;
+}
+
+.home__stat {
+  display: grid;
+  grid-template-areas: "value" "label";
+  justify-items: center;
+  align-content: center;
+  gap: $space-hairline;
+  padding: $space-4 $space-3;
+  text-align: center;
+  border: $border-width-thin solid var(--gold-border);
+  border-radius: token(radius-lg);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur($blur-sm);
+}
+
+.home__stat-label {
+  grid-area: label;
+  margin: $space-none;
+  color: var(--text-muted);
+  font-size: $font-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.02em;
+  line-height: $line-title;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.home__stat-value {
+  grid-area: value;
+  margin: $space-none;
+  color: var(--accent-strong);
+  font-size: $font-about-mobile-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-tight;
+}
+
 .home__actions {
   gap: $space-base;
-  margin-top: $home-actions-offset;
-  animation: soft-reveal 0.7s $ease-standard 0.32s both;
+  margin-top: $space-large;
+  animation: soft-reveal 0.7s $ease-standard 0.4s both;
 }
 
 .home__primary-action,
@@ -114,7 +159,7 @@
   width: min($container-social, $size-full);
   display: block;
   margin: $home-social-top $space-none $space-small;
-  animation: soft-reveal 0.7s $ease-standard 0.4s both;
+  animation: soft-reveal 0.7s $ease-standard 0.48s both;
 }
 
 .home__social-list {
@@ -186,6 +231,14 @@
 
   .home__intro {
     margin-top: $space-hairline;
+  }
+
+  .home__stats {
+    margin-top: $space-small;
+  }
+
+  .home__stat {
+    padding: $space-2 $space-3;
   }
 
   .home__actions {
@@ -264,5 +317,31 @@
   .home__primary-action,
   .home__secondary-action {
     width: $size-full;
+  }
+}
+
+@media screen and (max-width: $breakpoint-project) {
+  .home__stats {
+    grid-template-columns: minmax($size-none, $fr-unit);
+  }
+
+  .home__stat {
+    grid-template-areas: "value label";
+    grid-template-columns: 5rem minmax($size-none, $fr-unit);
+    justify-items: initial;
+    align-items: center;
+    padding: $space-2 $space-base;
+    text-align: left;
+  }
+
+  .home__stat-label {
+    font-size: $font-xs;
+    letter-spacing: $size-none;
+    text-transform: none;
+  }
+
+  .home__stat-value {
+    justify-self: end;
+    font-size: $font-xl;
   }
 }

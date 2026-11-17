@@ -37,6 +37,20 @@ function Home() {
           I design and build reliable full-stack products—from thoughtful user
           experiences to backend systems and production delivery.
         </p>
+        <dl className="home__stats" aria-label="At a glance">
+          <div className="home__stat">
+            <dt className="home__stat-label">Years in software</dt>
+            <dd className="home__stat-value">5+</dd>
+          </div>
+          <div className="home__stat">
+            <dt className="home__stat-label">Featured projects</dt>
+            <dd className="home__stat-value">6</dd>
+          </div>
+          <div className="home__stat">
+            <dt className="home__stat-label">Companies worked with</dt>
+            <dd className="home__stat-value">5</dd>
+          </div>
+        </dl>
         <div className="home__actions u-flex u-justify-center u-flex-wrap">
           <Link
             to="projects"
