@@ -10,23 +10,27 @@ const projects = [
   {
     title: "CareerLedger",
     content:
-      "Built CareerLedger, an account-private job search workspace for managing applications, resumes, timelines, reminders, Gmail updates, and outcome analytics, with a browser extension for capturing job postings.",
+      "A secure job-search workspace for tracking applications from first save through interviews and offers. It brings together resume and cover-letter management, follow-up reminders, Gmail update reviews, outcome analytics, and browser-based job capture.",
     tile: [
       "React",
       "TypeScript",
       "Chakra UI",
+      "Vite",
+      "Node.js",
       "Express",
       "PostgreSQL",
       "Prisma",
       "Redis",
+      "BullMQ",
       "AWS",
       "Terraform",
       "Docker",
     ],
     giturl: "https://github.com/Kabilesh020799/CareerLedger",
+    url: "https://d2g95c1jos960v.cloudfront.net",
     highlights: [
-      "Private resume, reminder, and application workflows",
-      "Gmail automation, job capture, and pipeline analytics",
+      "Application stages, sprints, timelines, calendar, and follow-up reminders",
+      "Gmail review, resume outcome analytics, and browser-extension job capture",
     ],
   },
   {
