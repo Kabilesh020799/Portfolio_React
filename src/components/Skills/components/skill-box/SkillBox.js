@@ -1,16 +1,8 @@
 import React, { memo } from "react";
 import "./SkillBox.scss";
 
-const SkillBox = (props) => {
-  const {
-    name,
-  } = props;
+const SkillBox = memo(function SkillBox({ name }) {
+  return <li className="skill-box">{name}</li>;
+});
 
-  return (
-    <div className="skill-box u-text-center">
-      {name}
-    </div>
-  );
-}
-
-export default memo(SkillBox);
+export default SkillBox;

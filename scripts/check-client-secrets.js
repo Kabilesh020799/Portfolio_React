@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const projectRoot = path.resolve(__dirname, "..");
+const localSkillsDirectory = path.join(projectRoot, ".agents", "skills");
 const sensitiveVariableName =
   /(?:^|_)(?:SECRET|PRIVATE|TOKEN|PASSWORD|CREDENTIALS?|API_KEY|ACCESS_KEY|CLIENT_SECRET|DATABASE_URL|JWT)(?:_|$)/i;
 const explicitPublicKeyName = /(?:^|_)PUBLIC_(?:API_)?KEY$/i;
@@ -67,7 +68,7 @@ function readEnvironmentFile(filePath) {
 }
 
 function walkFiles(directory) {
-  if (!fs.existsSync(directory)) return [];
+  if (directory === localSkillsDirectory || !fs.existsSync(directory)) return [];
 
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     if (entry.isDirectory() && ignoredDirectories.has(entry.name)) return [];

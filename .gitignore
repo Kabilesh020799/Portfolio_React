@@ -12,6 +12,9 @@
 /build
 gh-pages-temp/
 
+# local Codex skill
+/.agents
+
 # misc
 .DS_Store
 # local environment files (keep the documented example)

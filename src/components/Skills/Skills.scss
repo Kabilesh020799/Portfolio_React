@@ -3,77 +3,75 @@
 
 .SkillsSection {
   @include section-shell($space-panel $space-section $space-stage);
-  background:
-    linear-gradient(120deg, token(accent-soft), transparent 48%, token(gold-soft)),
-    radial-gradient(circle at $skills-radial-x $skills-radial-y, token(gold-radial), transparent $section-radial-size),
-    linear-gradient($gradient-angle, token(bg-section-strong), token(bg-section));
-  background-size: 120% 120%, 120% 120%, 100% 100%;
-  animation: gradient-drift 20s $ease-standard infinite;
+  background: token(bg);
 }
 
 .SkillsIntro {
-  @include section-intro($container-content);
-  margin-bottom: $space-section;
-}
-
-.SkillsEyebrow {
-  @include eyebrow;
-  animation: soft-reveal 0.6s $ease-standard both;
+  width: min($container-skills, $size-full);
+  margin: $size-none auto $space-section;
 }
 
 .SkillsTitle {
   @include display-heading;
-  margin-top: $title-margin-top;
-  animation: soft-reveal 0.6s $ease-standard 0.06s both;
-}
-
-.SkillsIntro p {
-  font-size: $font-md;
-  margin: $subtitle-margin-top auto $space-none;
-  animation: soft-reveal 0.6s $ease-standard 0.12s both;
+  max-width: 26ch;
+  min-width: $size-none;
+  margin: $size-none;
+  overflow-wrap: break-word;
 }
 
 .Skills {
-  grid-template-columns: repeat($grid-two, minmax($size-none, $fr-unit));
-  gap: $space-large;
+  display: flex;
+  flex-direction: column;
   width: min($container-skills, $size-full);
-  margin: $space-none auto;
+  margin: $size-none auto;
 }
 
 .skill-group {
-  @include card-surface($skill-card-surface-alpha);
-  animation: soft-reveal 0.6s $ease-standard both;
-  gap: $space-small;
-  padding: $space-base;
-}
-
-.skill-group:nth-child(2n) {
-  animation-delay: 0.06s;
-}
-
-.skill-group:nth-child(3n) {
-  animation-delay: 0.12s;
+  display: grid;
+  grid-template-columns: minmax(9.5rem, 0.34fr) minmax($size-none, 1fr);
+  align-items: center;
+  min-width: $size-none;
+  border-top: $border-width-thin solid token(border);
 }
 
 .skill-category {
-  color: var(--gold);
-  font-size: $font-meta;
-  font-weight: $font-weight-heavy;
-  line-height: $line-skill-category;
-  margin: $space-none;
+  margin: $size-none;
+  padding-block: $space-large;
+  color: token(text);
+  font-family: token(font-body);
+  font-size: $font-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-body;
 }
 
 .skill-list {
-  gap: $skill-list-gap;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-small $space-wide;
+  min-width: $size-none;
+  margin: $size-none;
+  padding: $size-none;
+  list-style: none;
 }
 
-@media screen and (max-width: $breakpoint-about) {
+@media (max-width: 680px) {
+  .skill-group {
+    grid-template-columns: minmax($size-none, 1fr);
+    padding-block: $space-base;
+  }
+
+  .skill-category {
+    padding: $size-none;
+  }
+
+  .skill-list {
+    padding-top: $space-tiny;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
   .SkillsSection {
-    padding: $space-page $space-base $space-panel;
+    padding: $space-page $space-base;
   }
-
-  .Skills {
-    grid-template-columns: $fr-unit;
-  }
-
 }
