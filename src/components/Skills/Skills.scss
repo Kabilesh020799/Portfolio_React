@@ -3,70 +3,95 @@
 
 .SkillsSection {
   @include section-shell($space-panel $space-section $space-stage);
-  background: token(bg);
+  background:
+    radial-gradient(circle at 86% 10%, token(accent-radial-soft), transparent $section-radial-size),
+    linear-gradient($gradient-angle, token(bg-section-strong), token(bg-section));
 }
 
 .SkillsIntro {
   width: min($container-skills, $size-full);
-  margin: $size-none auto $space-section;
+  margin: $size-none auto $space-roomy;
 }
 
 .SkillsTitle {
   @include display-heading;
-  max-width: 26ch;
+  max-width: $size-full;
   min-width: $size-none;
   margin: $size-none;
   overflow-wrap: break-word;
+  font-size: clamp($font-about-desktop-heading, 7vw, $font-home-title-max);
+  font-weight: $font-weight-bold;
+  line-height: $line-tight;
 }
 
 .Skills {
-  display: flex;
-  flex-direction: column;
   width: min($container-skills, $size-full);
   margin: $size-none auto;
+  overflow: visible;
+  border: $border-width-thin solid token(border-soft);
+  border-radius: token(radius-lg);
+  background: token(bg-section-strong);
+  box-shadow: token(shadow-soft);
 }
 
 .skill-group {
   display: grid;
-  grid-template-columns: minmax(9.5rem, 0.34fr) minmax($size-none, 1fr);
+  grid-template-columns: minmax(13rem, 0.38fr) minmax($size-none, 1fr);
   align-items: center;
+  gap: $space-large;
   min-width: $size-none;
-  border-top: $border-width-thin solid token(border);
+  padding: $space-large $space-wide;
+  border-bottom: $border-width-thin solid token(border);
+}
+
+.skill-group:nth-child(even) {
+  background: token(bg-section-soft);
+}
+
+.skill-group:last-child {
+  border-bottom: 0;
 }
 
 .skill-category {
   margin: $size-none;
-  padding-block: $space-large;
-  color: token(text);
+  color: token(accent-strong);
   font-family: token(font-body);
-  font-size: $font-md;
+  font-size: $font-card-title;
   font-weight: $font-weight-semibold;
-  line-height: $line-body;
+  line-height: $line-heading;
 }
 
 .skill-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: $space-small $space-wide;
+  gap: $space-tiny;
   min-width: $size-none;
   margin: $size-none;
   padding: $size-none;
   list-style: none;
 }
 
+@media (max-width: $breakpoint-about) {
+  .SkillsSection {
+    padding: $space-page $space-section;
+  }
+
+  .skill-group {
+    grid-template-columns: minmax(11rem, 0.38fr) minmax($size-none, 1fr);
+    gap: $space-base;
+  }
+}
+
 @media (max-width: 680px) {
   .skill-group {
     grid-template-columns: minmax($size-none, 1fr);
-    padding-block: $space-base;
-  }
-
-  .skill-category {
-    padding: $size-none;
+    gap: $space-small;
+    padding: $space-base $space-large;
   }
 
   .skill-list {
-    padding-top: $space-tiny;
+    gap: $space-tiny;
   }
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Skills.scss";
 import { skillsData } from "../../data";
+import { getEmployersForSkill, getProjectsForSkill } from "./skillProjectMap";
 import SkillBox from "./components/skill-box/SkillBox";
 
 function Skills() {
@@ -23,7 +24,12 @@ function Skills() {
               </h3>
               <ul className="skill-list" aria-labelledby={categoryId}>
                 {skillGroup.skills.map((skill) => (
-                  <SkillBox key={skill} name={skill} />
+                  <SkillBox
+                    key={skill}
+                    name={skill}
+                    employers={getEmployersForSkill(skill)}
+                    projects={getProjectsForSkill(skill)}
+                  />
                 ))}
               </ul>
             </section>

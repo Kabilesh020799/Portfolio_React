@@ -1,9 +1,110 @@
 @use "../../../../styles/tokens" as *;
 
 .skill-box {
-  display: block;
-  min-width: $size-none;
+  position: relative;
+  display: inline-flex;
+}
+
+.skill-box--open {
+  z-index: 5;
+}
+
+.skill-box__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: $space-tiny $space-base;
+  border: $border-width-thin solid token(border-soft);
+  border-radius: token(radius-sm);
+  background: token(surface-card);
   color: token(text-muted);
+  font-family: token(font-body);
   font-size: $font-md;
+  font-weight: $font-weight-medium;
   line-height: $line-body;
+  text-align: left;
+  transition:
+    color $duration-fast $ease-standard,
+    background-color $duration-fast $ease-standard,
+    border-color $duration-fast $ease-standard,
+    box-shadow $duration-fast $ease-standard,
+    transform $duration-fast $ease-standard;
+}
+
+.skill-box__trigger {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .skill-box__chip:hover {
+    transform: translateY($button-hover-lift);
+    border-color: token(accent-border-strong);
+    background: token(accent-soft);
+    color: token(text);
+    box-shadow: token(shadow-action-hover);
+  }
+}
+
+.skill-box__trigger:focus-visible {
+  outline: $focus-ring-width solid token(accent-strong);
+  outline-offset: $space-hairline;
+}
+
+.skill-box__popover {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + $space-1);
+  left: 0;
+  display: grid;
+  gap: $space-tiny;
+  width: max-content;
+  min-width: 11rem;
+  max-width: min(17rem, calc(100vw - $space-section));
+  padding: $space-small $space-base;
+  border: $border-width-thin solid token(border-medium);
+  border-radius: token(radius-md);
+  background: token(bg-elevated);
+  box-shadow: token(shadow);
+  color: token(text-muted);
+  font-size: $font-sm;
+  line-height: $line-readable;
+  pointer-events: auto;
+}
+
+.skill-box__popover-row {
+  display: grid;
+  gap: $space-1;
+}
+
+.skill-box__popover::before {
+  position: absolute;
+  top: -$space-1;
+  right: 0;
+  left: 0;
+  height: $space-1;
+  content: "";
+}
+
+.skill-box:nth-last-child(-n + 2) .skill-box__popover {
+  right: 0;
+  left: auto;
+}
+
+.skill-box__popover[hidden] {
+  display: none;
+}
+
+.skill-box__popover-label {
+  color: token(accent-strong);
+  font-weight: $font-weight-semibold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-box__chip {
+    transition: none;
+  }
+
+  .skill-box__chip:hover {
+    transform: none;
+  }
 }
